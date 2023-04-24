@@ -1,0 +1,29 @@
+<div id="wrap-type-of-volunteer-dialog" *ngIf="typeOfVolunteer!=null">
+    <h2>עריכת התנדבות</h2>
+    <p><strong>קוד התנדבות:</strong> {{typeOfVolunteer.id}}</p>
+    <p><strong>סוג התנדבות:</strong> {{typeOfVolunteer.typeOfVolunteeringName}}</p>
+    <mat-form-field appearance="fill" dir="rtl">
+        <mat-label>ימים</mat-label>
+        <mat-select [formControl]="days" multiple [(ngModel)]="selection">
+            <mat-select-trigger>
+                {{days.value ? days.value[0] : ''}}
+                <span *ngIf="days.value?.length > 1">
+                    (+{{days.value.length - 1}} {{days.value?.length === 2 ? 'נוסף' : 'נוספים'}})
+                </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let day of daysList" [value]="day" selected="true">{{day}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>בחר שעת התחלה</mat-label>
+        <input [(ngModel)]="typeOfVolunteer.startHour" #startHour="ngModel" matInput type="time">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>בחר שעת סיום</mat-label>
+        <input [(ngModel)]="typeOfVolunteer.endHour" #endHour="ngModel" matInput type="time">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="update()">עדכן</button>
+</div>

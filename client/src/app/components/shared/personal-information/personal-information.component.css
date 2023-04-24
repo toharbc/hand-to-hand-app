@@ -1,0 +1,37 @@
+button {
+    width: 100%;
+    background-color: #ffc000 !important;
+}
+
+#finished-message {
+    margin-top: 50px;
+}
+
+#finished-message button {
+    margin-top: 30px;
+}
+
+.returning-button mat-icon {
+    margin-right: 6px;
+    color: #585858;
+    font-size: 17px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.returning-button {
+    background-color: transparent !important;
+    width: auto;
+}
+
+form .returning-button {
+    color: #585858;
+}
+
+.green {
+    color: green !important;
+}
+
+.red {
+    color: red !important;
+}

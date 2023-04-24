@@ -1,0 +1,32 @@
+.mat-card:hover {
+    border-color: #ffc000;
+}
+
+.mat-card {
+   border: solid 1px whitesmoke; 
+   transition: .4s;
+   cursor: pointer;
+   min-width: 250px;
+}
+
+.mat-card-title {
+    font-size: 18px !important;
+}
+
+.mat-card-subtitle, .mat-card-title {
+    font-family: assistant;
+}
+
+#sign-as-favorite {
+    cursor: pointer;
+}
+
+mat-icon {
+    font-size: 18px;
+    height: fit-content;
+    width: fit-content;
+}
+
+mat-icon.favorite {
+    color: #ffc000;
+}

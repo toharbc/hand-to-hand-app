@@ -1,0 +1,45 @@
+form {
+    padding-top: 10px;
+}
+
+button.submit {
+    width: 100%;
+    background-color: #595959;
+}
+
+p {
+    font-family: assistant;
+    text-align: right;
+}
+
+.suitable-volunteers-list {
+    display: grid;
+    padding-bottom: 83px;
+    height: fit-content;
+}
+
+.suitable-volunteers-list h3 {
+    font-family: assistant;
+}
+
+.wrap-suitable-volunteer {
+    width: 320px;
+    border: solid 1px #e0e0e0;
+    border-radius: 4px;
+    margin-inline: auto;
+    padding: 10px;
+}
+
+/* -----------------------------*/
+.wrap-list {
+    margin-bottom: 20px;
+}
+
+button.send {
+    background-color: #585858;
+    margin-bottom: 15px;
+}
+
+button.filter {
+    margin-inline: 6px;
+}

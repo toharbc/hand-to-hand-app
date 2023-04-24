@@ -1,0 +1,82 @@
+.scetion {
+    direction: rtl;
+    text-align: right;
+}
+
+h1 {
+    font-family: assistant;
+    font-size: 21px;
+}
+
+.mat-dialog-content {
+    text-align: right;
+    direction: rtl;
+    max-height: none;
+    height: fit-content;
+}
+
+.wrap-volunteer-details {
+    display: grid;
+    padding-bottom: 13px;
+}
+
+strong {
+    font-weight: 500;
+}
+
+#wrap-rating-and-comment {
+    border: solid 1px #00000021;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#wrap-rating-and-comment mat-form-field {
+    display: block;
+}
+
+#wrap-comment {
+    margin-top: 20px;
+}
+
+mat-divider {
+    margin-block: 10px;
+}
+
+textarea {
+    font-family: assistant;
+}
+
+div#wrap-rating-and-comment button {
+    background-color: #595959;
+}
+
+.title {
+    font-weight: 500;
+    color: #595959;
+    padding-inline: 6px;
+    display: grid;
+    grid-template-columns: auto fit-content(100%);
+    align-items: center;
+}
+
+p.title mat-icon {
+    visibility: hidden;
+}
+
+p.title.done mat-icon {
+    visibility: visible;
+    margin-left: 5px;
+    font-size: 18px;
+    height: fit-content;
+}
+
+.details {
+    padding: 5px;
+    margin-block: 6px;
+    border-radius: 4px;
+    background-color: whitesmoke;
+}
+
+.details h4 {
+    font-family: assistant;
+}

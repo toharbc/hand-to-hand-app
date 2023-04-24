@@ -1,0 +1,15 @@
+<!-- <div class="wrap-find" *ngIf="volunteers.length==0">לא נמצא מתנדב מתאים</div>
+<div class="wrap-find" *ngIf="volunteers.length>=0">
+    <div *ngFor="let item of volunteers">
+        <p>{{item.UserId}}</p>
+    </div>
+</div> -->
+<p *ngIf="!volunteers||volunteers.length==0">לא נמצא מתנדב מתאים</p>
+<div *ngFor="let volunteer of volunteers" class="wrap-suitable-volunteer">
+    <mat-icon>account_circle</mat-icon>
+    <p><strong>{{volunteer.UserFirstName}} {{volunteer.UserLastName}}</strong>
+         ~ {{volunteer.UserAdress}}</p>
+    <mat-divider></mat-divider>
+    <span>{{volunteer.startHour}} - {{volunteer.endHour}}</span>
+    <span>{{convertList(volunteer.days)}}</span>
+</div>

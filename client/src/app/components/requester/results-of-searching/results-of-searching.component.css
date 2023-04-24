@@ -1,0 +1,18 @@
+#wrap-results-of-searching {
+    padding-bottom: 50px;
+    height: fit-content !important;
+}
+
+.wrap-volunteer {
+    border: solid 1px #0000002e;
+    min-width: 300px;
+    width: fit-content;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    padding: 10px;
+    margin-inline: auto;
+}
+
+strong {
+    font-weight: 600;
+}

@@ -1,0 +1,26 @@
+#wrap-home-page {
+    padding-bottom: 50px;
+}
+
+.wrap-buttons {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: fit-content(50%) fit-content(50%);
+    grid-column-gap: 10px;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+button {
+    width: fit-content;
+    font-size: 16px !important;
+}
+
+button:first-of-type {
+    background-color: #ffc000;
+    margin-right: auto;
+}
+
+button:last-of-type {
+    background-color: #595959;
+}

@@ -1,0 +1,14 @@
+h2 {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: assistant;
+}
+  
+.logo {
+    background-image: url(../../../../assets/logo.png);
+    background-size: cover;
+    background-position: top;
+    height: 150px;
+    margin-bottom: 25px;
+    background-color: whitesmoke;
+}

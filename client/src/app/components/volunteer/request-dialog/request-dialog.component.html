@@ -1,0 +1,23 @@
+<div id="wrap-request-dialog" class="section">
+    <h1 mat-dialog-title>בקשת עזרה מס' 314</h1>
+    <div mat-dialog-content>
+        <p><strong>שם המבקש: </strong>{{data.volunteering.ReqFirstName}} {{data.volunteering.ReqLastName}}</p>
+        <p><strong>סוג ההתנדבות: </strong>{{data.volunteering.TypeOfVolunteeringName}}</p>
+        <p><strong>ימים בשבוע: </strong>{{convertList(data.volunteering.days)}}</p>
+        <p><strong>בין השעות: </strong>{{data.volunteering.startHour}} - {{data.volunteering.endHour}}</p>
+        <p><strong>סטטוס בקשה: </strong>{{data.volunteering.Status}}</p>
+    </div>
+    <div mat-dialog-actions [ngSwitch]="getStatus(data.volunteering.Status)">
+        <div *ngSwitchCase="1">
+            <button mat-stroked-button (click)="reject()">דחה</button>
+            <button mat-flat-button class="confirm" (click)="confirm()" color="primary" cdkFocusInitial>אשר</button>
+        </div>
+        <div *ngSwitchCase="2">
+            <button mat-stroked-button (click)="done()">סמן כבוצע</button>
+            <button mat-stroked-button (click)="onNoClick()">סגור</button>
+        </div>
+        <div *ngSwitchDefault>
+            <button mat-stroked-button (click)="onNoClick()">סגור</button>
+        </div>
+    </div>
+</div>

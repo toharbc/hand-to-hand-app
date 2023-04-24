@@ -1,0 +1,100 @@
+<div id="wrap-personal-information" class="section">
+    <header text="עדכון פרטים אישיים"></header>
+    <div *ngIf="!isFinishUpdating">
+        <form class="mat-form-field" (ngSubmit)="update()" #updateDetailsForm="ngForm">
+
+            <!-- <button mat-button class="returning-button" 
+            (click)="returning()" type="button">חזור לאזור האישי
+                <mat-icon>west</mat-icon>
+            </button> -->
+            <returning-button [userId]="userId"></returning-button>
+
+            <mat-form-field>
+                <mat-label>מייל</mat-label>
+                <input matInput placeholder="מייל" type="email" name="email" [(ngModel)]="user.UserMail"
+                    #email="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <label *ngIf="email.errors?.['required']">שדה חובה</label>
+                    <label *ngIf="email.errors?.['pattern']">כתובת מייל לא תקינה</label>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>שם פרטי</mat-label>
+                <input matInput placeholder="שם פרטי" type="text" name="first-name" [(ngModel)]="user.UserFirstName"
+                    #fname="ngModel" required minlength="2">
+                <mat-error *ngIf="fname.invalid && (fname.dirty || fname.touched)">
+                    <label *ngIf="fname.errors?.['required']">שדה חובה</label>
+                    <label *ngIf="fname.errors?.['minlength']">שדה זה צריך להכיל לפחות 2 תווים</label>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>שם משפחה</mat-label>
+                <input matInput placeholder="שם משפחה" type="text" name="last-name" [(ngModel)]="user.UserLastName"
+                    #lname="ngModel" required minlength="2">
+                <mat-error *ngIf="lname.invalid && (lname.dirty || lname.touched)">
+                    <label *ngIf="lname.errors?.['required']">שדה חובה</label>
+                    <label *ngIf="lname.errors?.['minlength']">שדה זה צריך להכיל לפחות 2 תווים</label>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>טלפון</mat-label>
+                <input matInput placeholder="טלפון" type="tel" name="phone" required [(ngModel)]="user.UserPhone"
+                    #phone="ngModel" minlength="7">
+                <mat-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    <label *ngIf="phone.errors?.['required']">שדה חובה</label>
+                    <label *ngIf="phone.errors?.['minlength']">שדה זה צריך להכיל לפחות 7 תווים</label>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field>
+            <mat-label>סיסמה קודמת</mat-label>
+            <input matInput placeholder="סיסמה קודמת" type="password" name="password" 
+            [(ngModel)]="previosPassword" required #password="ngModel" minlength="6">
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                <label *ngIf="password.errors?.['required']">שדה חובה</label>
+                <label *ngIf="password.errors?.['minlength']">שדה זה צריך להכיל לפחות 6 תווים</label>
+            </mat-error>
+        </mat-form-field> -->
+        
+        <!-- <mat-form-field>
+            <mat-label>סיסמה חדשה</mat-label>
+            <input matInput placeholder="סיסמה חדשה" type="password" name="password" 
+            [(ngModel)]="newPassword" required #password="ngModel" minlength="6">
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                <label *ngIf="password.errors?.['required']">שדה חובה</label>
+                <label *ngIf="password.errors?.['minlength']">שדה זה צריך להכיל לפחות 6 תווים</label>
+            </mat-error>
+        </mat-form-field> -->
+        
+        <!-- <mat-form-field>
+            <mat-label>אשר סיסמה חדשה</mat-label>
+            <input matInput placeholder="אשר סיסמה חדשה" type="password"  name="confirmPassword"
+            [formControl]="confirmPasswordControl" (input)="checkValidation($event)">
+            <mat-error *ngIf="confirmPasswordControl.invalid && (confirmPasswordControl.dirty || confirmPasswordControl.touched)">
+                <label *ngIf="confirmPasswordControl.errors?.['required']">שדה חובה</label>
+                <label *ngIf="confirmPasswordControl.errors?.['NotEqual']">הסיסמה שונה מהסיסמה שהזנת קודם</label>
+            </mat-error>
+        </mat-form-field> -->
+
+            <mat-form-field>
+                <mat-label>כתובת</mat-label>
+                <input matInput placeholder="כתובת" type="text" name="address" required [(ngModel)]="user.UserAdress"
+                    #address="ngModel" minlength="2">
+                <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
+                    <label *ngIf="address.errors?.['required']">שדה חובה</label>
+                    <label *ngIf="address.errors?.['minlength']">שדה זה צריך להכיל לפחות 2 תווים</label>
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">עדכן</button>
+        </form>
+    </div>
+    <div *ngIf="isFinishUpdating" id="finished-message">
+        <mat-icon [class.green]="success" [class.red]="!success">{{success ? 'check_circle_outline' : 'highlight_off'}}</mat-icon>
+        <p>{{success ? 'הפרטים עודכנו בהצלחה' : 'קרתה תקלה בעדכון הפרטים'}}</p>
+        <returning-button [userId]="userId"></returning-button>
+    </div>
+</div>

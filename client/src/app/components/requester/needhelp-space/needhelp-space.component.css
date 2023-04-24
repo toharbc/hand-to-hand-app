@@ -1,0 +1,10 @@
+.buttons-wrap {
+    display: grid;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+button {
+    width: 250px;
+    font-weight: 400 !important;
+}

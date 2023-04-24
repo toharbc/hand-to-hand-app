@@ -1,0 +1,8 @@
+<div id="wrap-question-dialog">
+    <h2 mat-dialog-title>שים לב</h2>
+    <p>{{data?.question}}</p>
+    <div class="wrap-actions" mat-dialog-actions>
+        <button mat-raised-button color="primary" [mat-dialog-close]="true">אישור</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="false">ביטול</button>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div id="wrap-commits" class="section">
+    <header text="תגובות של משתמשים עליך"></header>
+    <returning-button [userId]="volunteerId"></returning-button>
+    <!-- <p>עבור המתנדב שמעון לוי</p> -->
+    <!-- <commit name="משה מנחם" commit="היה ממש מצוין. הבן שלי התקדם בלימודים בזכותו ונהנה מאוד מהשיעורים. מורה עם סבלנות ומקצועיות!" [date]="date1"></commit>
+    <commit name="חיים לוי" commit="מתנדב ששווה לקחת. דייקן, אחראי ומאוד מקצועי. ממליץ בחום!" [date]="date2"></commit> -->
+    <commit *ngFor="let comment of comments" [comment]="comment"></commit>
+    <div *ngIf="!comments||!comments.length" class="empty">
+        <mat-icon>feedback</mat-icon>
+        <p>לא קיימות תגובות.</p>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.wrap-suitable-volunteer {
+    background-color: whitesmoke;
+    width: 250px;
+    margin: 10px auto;
+    padding: 10px;
+    align-items: center;
+    display: grid;
+}
+
+mat-divider {
+    margin-bottom: 6px;
+}
+
+span {
+    line-height: 24px;
+}
+
+span strong {
+    font-weight: 500;
+}
+
+mat-icon {
+    margin: 0 auto 6px;
+    height: fit-content;
+    width: fit-content;
+    transform: scale(1.2);
+}

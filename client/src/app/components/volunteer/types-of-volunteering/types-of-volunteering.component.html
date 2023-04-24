@@ -1,0 +1,45 @@
+<div id="wrap-types-of-volunteering" class="section">
+
+    <p class="title">טבלת התנדבויות</p>
+    <p *ngIf="!dataSource||!dataSource.length||!dataSource[0].id">לא קיימים עדיין סוגי התנדבויות</p>
+    <table *ngIf="dataSource&&dataSource.length&&dataSource[0].id" mat-table [dataSource]="dataSource" class="mat-elevation-z8" dir="rtl">
+
+        <ng-container matColumnDef="typeOfVolunteeringName">
+            <th mat-header-cell *matHeaderCellDef> סוג </th>
+            <td mat-cell *matCellDef="let element"> {{element.typeOfVolunteeringName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="days">
+            <th mat-header-cell *matHeaderCellDef> ימים בשבוע </th>
+            <td mat-cell *matCellDef="let element"> {{convertList(element.days)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hours">
+            <th mat-header-cell *matHeaderCellDef> שעות </th>
+            <td mat-cell *matCellDef="let element"> {{getAsDate(element.startHour) | date:'H:mm'}} -
+                {{getAsDate(element.endHour) | date:'H:mm'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef> אפשרויות </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-mini-fab [matMenuTriggerFor]="optionsMenu">
+                    <mat-icon>south_west</mat-icon>
+                </button>
+
+                <mat-menu #optionsMenu="matMenu" dir="rtl">
+                    <button mat-menu-item (click)="openEditDialog(element)">
+                        <mat-icon>edit</mat-icon>עריכה
+                    </button>
+                    <button mat-menu-item (click)="delete(element)">
+                        <mat-icon>delete</mat-icon>מחיקה
+                    </button>
+                </mat-menu>
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

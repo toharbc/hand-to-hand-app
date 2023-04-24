@@ -1,0 +1,27 @@
+.star {
+    font-size: 1.5rem;
+    color: #eee1b7;
+}
+
+.filled {
+    color: #ffc000;
+}
+
+.bad {
+    color: #deb0b0;
+}
+
+.filled.bad {
+    color: #ff1e1e;
+}
+
+p {
+    font-family: assistant;
+    font-size: 15px;
+}
+
+pre {
+    font-family: assistant;
+    direction: rtl;
+    font-size: 15px;
+}

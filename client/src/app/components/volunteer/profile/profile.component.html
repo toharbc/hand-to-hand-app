@@ -1,0 +1,24 @@
+<button mat-icon-button class="menu" [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" dir="rtl">
+  <button mat-menu-item (click)="updateDetails()">
+    <mat-icon>edit</mat-icon>
+    <span>עדכון פרטים</span>
+  </button>
+  <button mat-menu-item (click)="switch()">
+    <mat-icon>switch_account</mat-icon>
+    <span>עבור לאיזור האישי כ{{isVolunteer?'מבקש עזרה':'מתנדב'}}</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>התנתק</span>
+  </button>
+</mat-menu>
+<div class="wrap-profile">
+  <div class="wrap-section">
+    <mat-icon id="profile">account_circle</mat-icon>
+    <p><strong>{{user.UserFirstName + ' ' + user.UserLastName}}</strong> | {{user.UserAdress}}</p>
+  </div>
+  <rating-readonly *ngIf="isRating" [currentRate]="rating"></rating-readonly>
+</div>

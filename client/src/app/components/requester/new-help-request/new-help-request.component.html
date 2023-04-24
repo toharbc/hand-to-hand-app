@@ -1,0 +1,157 @@
+<div id="wrap-new-help-request" class="section">
+
+    <header text="פתיחת בקשה"></header>
+
+    <mat-stepper orientation="vertical" linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="typeFormGroup">
+            <form [formGroup]="typeFormGroup">
+                <ng-template matStepLabel>בחר סוג התנדבות</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>סוג התנדבות</mat-label>
+                    <mat-select formControlName="typeId">
+                        <mat-option *ngFor="let type of types" [value]="type.TypeOfVolunteeringId">
+                            {{type.TypeOfVolunteeringName}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="typeFormGroup.invalid">
+                        <label *ngIf="typeFormGroup.controls.typeId.errors?.['required']">יש לבחור סוג התנדבות</label>
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext (click)="getSuitableVolunteers()">המשך</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="volunteerFormGroup">
+            <form [formGroup]="volunteerFormGroup">
+                <ng-template matStepLabel>בחר מתנדב</ng-template>
+                <p>כדי לדייק את המתנדב סנן לפי שעות התנדבות</p>
+                <form [formGroup]="filterFormGroup">
+                    <mat-form-field>
+                        <input matInput type="time" placeholder="שעת התחלה" formControlName="startHour" />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="time" placeholder="שעת סיום" formControlName="endHour" />
+                    </mat-form-field>
+                    <button class="filter" mat-stroked-button (click)="filterByHours()">סנן</button>
+                    <button class="filter" mat-stroked-button (click)="clearFilter()">נקה סינון</button>
+                </form>
+                <div class="wrap-list" *ngFor="let volunteer of suitableVolunteers">
+                    <volunteer [volunteer]="volunteer" (onSelected)="selectVolunteer($event)"></volunteer>
+                </div>
+                <mat-form-field>
+                    <input matInput placeholder="המתנדב שנבחר" readonly formControlName="volunteer" required>
+                    <mat-error *ngIf="volunteerFormGroup.invalid">
+                        <label *ngIf="volunteerFormGroup.controls.volunteer.errors?.['required']">יש לבחור מתנדב</label>
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>חזור</button>
+                    <button mat-button matStepperNext (click)="getSelectedVolunteers()">המשך</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>בחר טווח תאריכים להתנדבות</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>תאריך התחלה</mat-label>
+                    <input matInput formControlName="startDate" type="date" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>תאריך סיום</mat-label>
+                    <input matInput formControlName="endDate" type="date" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>חזור</button>
+                    <button mat-button matStepperNext>המשך</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="timeForVolunFormGroup">
+            <form [formGroup]="timeForVolunFormGroup">
+                <ng-template matStepLabel>בחר ימים וטווח שעות להתנדבות</ng-template>
+                <p>יש לבחור בימים מתוך אלו שהגדיר המתנדב</p>
+                <mat-form-field appearance="fill">
+                    <mat-label>ימים להתנדבות</mat-label>
+                    <mat-select formControlName="days" multiple>
+                        <mat-select-trigger>
+                            {{timeForVolunFormGroup.controls.days.value ? timeForVolunFormGroup.controls.days.value[0] : ''}}
+                            <span *ngIf="timeForVolunFormGroup.controls.days.value?.length > 1">
+                              (+{{timeForVolunFormGroup.controls.days.value.length - 1}} {{timeForVolunFormGroup.controls.days.value?.length === 2 ? 'נוסף' : 'נוספים'}})
+                            </span>
+                          </mat-select-trigger>
+                        <mat-option *ngFor="let day of daysList" [value]="day">
+                            {{day}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="timeForVolunFormGroup.invalid">
+                        <label *ngIf="timeForVolunFormGroup.controls.days.errors?.['required']">יש לבחור ימים להתנדבות</label>
+                    </mat-error>
+                </mat-form-field>
+                <p>יש לבחור שעת התחלה ושעת סיום בטווח שבחר המתנדב</p>
+                <p><strong>שעת התחלה: </strong>{{selectedVolunteer.startHour}}</p>
+                <p><strong>שעת סיום: </strong>{{selectedVolunteer.endHour}}</p>
+                <mat-form-field appearance="fill">
+                    <mat-label>שעת התחלה</mat-label>
+                    <input matInput formControlName="startHour" type="time" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>שעת סיום</mat-label>
+                    <input matInput formControlName="endHour" type="time" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>חזור</button>
+                    <button mat-button matStepperNext>המשך</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>שלח בקשת עזרה למתנדב</ng-template>
+            <button mat-raised-button color="primary" class="send" (click)="sendRequestToVolunteer()">שלח בקשה</button>
+            <div>
+                <button mat-button matStepperPrevious>חזור</button>
+                <button mat-button (click)="stepper.reset()">אפס בקשה</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+    <!-- <form (ngSubmit)="newHelpRequest()">
+        
+        <mat-form-field>
+            <mat-label>בחר סוג בקשה</mat-label>
+            <mat-select name="requestType" [(ngModel)]="volunteering.typeOfVolunteeringId">
+                <mat-option *ngFor="let item of typesOfVolunteering" [value]="item.TypeOfVolunteeringId">
+                    {{item.TypeOfVolunteeringName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>תאריך התחלה</mat-label>
+            <input matInput placeholder="תאריך התחלה" type="date" name="date" [(ngModel)]="volunteering.startDate">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>תאריך סיום</mat-label>
+            <input matInput placeholder="תאריך סיום" type="date" name="endDate" [(ngModel)]="volunteering.endDate">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>שעת התחלה</mat-label>
+            <input matInput placeholder="שעת התחלה" type="time" name="start-time" 
+            [(ngModel)]="volunteering.startHour" (input)="setStartHour($event)">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>שעת סיום</mat-label>
+            <input matInput placeholder="שעת סיום" type="time" name="end-time" 
+            [(ngModel)]="volunteering.endHour" (input)="setEndHour($event)">
+        </mat-form-field>
+
+        <button mat-raised-button class="submit" color="primary" (click)="findVolunteer()">מצא מתנדב</button>
+
+    </form>
+    <div class="suitable-volunteers-list" *ngIf="isShowFind">
+        <h3>מתנדבים מתאימים</h3>
+        <find [volunteers]="volunteers"></find>
+    </div> -->
+
+</div>

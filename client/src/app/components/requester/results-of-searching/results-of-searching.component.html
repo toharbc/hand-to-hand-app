@@ -1,0 +1,7 @@
+<div id="wrap-results-of-searching" class="section">
+    <div class="wrap-volunteer" *ngFor="let volunteer of volunteers" (click)="open(volunteer)">
+        <!-- <p>מספר מתנדב: {{volunteer.UserId}}</p> -->
+        <p><strong>{{volunteer.UserName}}</strong> | {{volunteer.TypeOfVolunteerName}}</p>
+        <span>איזור התנדבות <strong>{{volunteer.UserLocation}}</strong></span>
+    </div>
+</div>

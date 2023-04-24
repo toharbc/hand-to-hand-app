@@ -1,0 +1,12 @@
+<!-- <p>need-help works!</p>
+<button mat-raised-button  routerLink="/guest">  כניסה כאורח </button>
+<button mat-raised-button routerLink="/register">הרשמה</button>
+<button mat-raised-button  routerLink="/login">כבר יש לך חשבון? התחבר</button> -->
+<div id="wrap-need-help" class="section">
+    <!-- <header text="צריך עזרה?"></header> -->
+    <header text="אזור אישי [מבקש עזרה]"></header>
+    <!-- <p>כדי לפתוח בקשת עזרה חדשה יש <a href="register">להירשם</a> או <a href="login">להתחבר</a> לאפליקציה</p> -->
+    <profile [user]="user"></profile>
+    <requester-requests [requests]="requests"></requester-requests>
+    <button mat-raised-button color="primary" (click)="newRequest()">הוסף בקשת עזרה</button>
+</div>

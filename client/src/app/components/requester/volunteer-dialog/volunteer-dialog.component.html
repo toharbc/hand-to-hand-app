@@ -1,0 +1,43 @@
+<div id="wrap-volunteer-dialog" class="section">
+    <h1 mat-dialog-title>בקשת עזרה מס' 315</h1>
+    <div mat-dialog-content>
+        <div class="wrap-volunteer-details">
+            <p>פרטי ההתנדבות</p>
+            <span><strong>מתנדב: </strong>{{request.volunteerFirstName}} {{request.VolunteerLastName}}</span>
+            <span><strong>סוג עזרה: </strong>{{request.TypeOfVolunteeringName}}</span>
+            <span><strong>ימים: </strong>{{convertList(request.days)}}</span>
+            <span><strong>שעות: </strong>{{request.startHour}} - {{request.endHour}}</span>
+            <span><strong>סטטוס: </strong>{{request.Status}}</span>
+            <div class="details" *ngIf="isPossible" (click)="isShow=!isShow">
+                <p><strong>פרטים ליצירת קשר עם המתנדב:</strong></p>
+                <div *ngIf="isShow">
+                    <p>{{user.UserMail}}</p>
+                    <p>{{user.UserPhone}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="wrap-rating-and-comment" *ngIf="isDone(request.Status)">
+            <p class="title" [class.done]="hasRating">{{ !hasRating ? 'עד כמה נהנית מהעזרה?' : 'הדירוג שלך על העזרה' }}
+                <mat-icon>check</mat-icon>
+            </p>
+            <rating (onRatingChange)="updateRating($event)" [rating]="hasRating?request.Rating:0"></rating>
+            <button mat-raised-button color="primary" class="confirm" (click)="saveRating()">
+                {{ !hasRating ? 'שמור' : 'עדכן' }} דירוג</button>
+            <mat-divider></mat-divider>
+            <p class="title" [class.done]="hasComment">{{ !hasComment ? 'רוצה להשאיר תגובה למתנדב?' : 'התגובה שלך
+                למתנדב' }}
+                <mat-icon>check</mat-icon>
+            </p>
+            <mat-form-field *ngIf="!hasComment">
+                <mat-label>התגובה שלך</mat-label>
+                <textarea matInput placeholder="מה שרצית לומר" type="text" name="response"
+                    [(ngModel)]="comment"></textarea>
+            </mat-form-field>
+            <p *ngIf="hasComment">{{request.Comment}}</p>
+            <button *ngIf="!hasComment" mat-raised-button color="primary" (click)="sendMessage()">שלח תגובה</button>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-stroked-button (click)="onNoClick()">סגור</button>
+    </div>
+</div>

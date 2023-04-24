@@ -1,0 +1,71 @@
+<div id="wrap-volunteer-detailes" class="section">
+  <header text="הוספת התנדבות"></header>
+  <form class="form" #addVolunteerform="ngForm" (ngSubmit)="addTypeOfVolunteering($event)">
+
+    <mat-form-field>
+      <mat-label>בחר סוג התנדבות</mat-label>
+      <mat-select name="requestType" [(ngModel)]="typeOfVolunteering_ForUsers.typeOfVolunteeringId">
+        <mat-option *ngFor="let item of typesOfVolunteering" [value]="item.TypeOfVolunteeringId">
+          {{item.TypeOfVolunteeringName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div id="wrap-adding-new-type">
+      <div *ngIf="!isAddNewType">
+        <p>סוג ההתנדבות שלך לא מופיע ברשימה? אפשר להוסיף אותו</p>
+        <button mat-stroked-button (click)="isAddNewType=true"><mat-icon>add</mat-icon>
+          הוסף סוג התנדבות חדש</button>
+      </div>
+      <div *ngIf="isAddNewType">
+        <mat-form-field>
+          <mat-label>הוספת סוג התנדבות</mat-label>
+          <input matInput placeholder="סוג התנדבות חדש" [formControl]="newTypeControl" />
+          <mat-error *ngIf="newTypeControl.invalid && (newTypeControl.dirty || newTypeControl.touched)">
+            <label *ngIf="newTypeControl.errors?.['required']">זהו שדה חובה</label>
+            <label *ngIf="newTypeControl.errors?.['minlength']">סוג ההתנדבות צריך להכיל לפחות 2 תווים</label>
+          </mat-error>
+        </mat-form-field>
+        <button mat-stroked-button (click)="addNewType()" type="button">הוסף</button>
+      </div>
+    </div>
+
+    <mat-form-field dir="rtl">
+      <mat-label>בחר ימים להתנדבות</mat-label>
+      <mat-select [formControl]="days" multiple>
+        <mat-select-trigger>
+          {{days.value ? days.value[0] : ''}}
+          <span *ngIf="days.value?.length > 1">
+            (+{{days.value.length - 1}} {{days.value?.length === 2 ? 'נוסף' : 'נוספים'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let day of daysList" [value]="day">{{day}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-label>בחר טווח שעות</mat-label>
+    <mat-form-field appearance="fill">
+      <mat-label>בחר שעת התחלה</mat-label>
+      <input [(ngModel)]="typeOfVolunteering_ForUsers.startHour" matInput type="time" 
+      (input)="setStartHour($event)" #startHour="ngModel" name="startHour" required>
+      <mat-error *ngIf="startHour.invalid && (startHour.dirty || startHour.touched)">
+        <label *ngIf="startHour.errors?.['required']">שדה חובה</label>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>בחר שעת סיום</mat-label>
+      <input [(ngModel)]="typeOfVolunteering_ForUsers.endHour" matInput type="time" 
+      (input)="setEndHour($event)" #endHour="ngModel" name="endHour" required>
+        <mat-error *ngIf="endHour.invalid && (endHour.dirty || endHour.touched)">
+          <label *ngIf="endHour.errors?.['required']">שדה חובה</label>
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button class="submit" type="submit" color="primary">הוסף
+      התנדבות</button>
+
+  </form>
+  <!-- הסלשתי -->
+  <!-- <button mat-raised-button (click)="myRequest()">הבקשות שלי</button> -->
+</div>

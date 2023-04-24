@@ -1,0 +1,35 @@
+#wrap-mitnadev {
+    padding-bottom: 50px !important;
+    height: fit-content;
+}
+
+.wrap-buttons {
+    width: fit-content;
+    margin-inline: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: fit-content(50%) fit-content(50%);
+    grid-column-gap: 10px;
+}
+
+button {
+    width: fit-content;
+    font-size: 16px !important;
+}
+
+/* button:first-of-type {
+    background-color: #ffc000;
+}
+
+button:last-of-type {
+    background-color: #595959;
+} */
+
+button {
+    background-color: #595959 !important;
+    margin-block: 12px 30px;
+}
+
+button.more-space {
+    margin-top: 32px;
+}

@@ -1,0 +1,18 @@
+.scetion {
+    direction: rtl;
+    text-align: right;
+}
+
+h1 {
+    font-family: assistant;
+    font-size: 21px;
+}
+
+.mat-dialog-content {
+    text-align: right;
+    direction: rtl;
+}
+
+button.confirm {
+    background-color: #ffc000;
+}

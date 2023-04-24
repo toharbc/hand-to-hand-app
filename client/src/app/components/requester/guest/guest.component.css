@@ -1,0 +1,40 @@
+form p {
+    font-family: assistant;
+    text-align: right;
+}
+
+button.submit {
+    margin-top: 15px;
+    width: 100%;
+}
+
+button.register {
+    font-weight: 400 !important;
+}
+
+/* mat-form-field:first-of-type {
+    margin-bottom: 21px;
+} */
+
+.wrap-buttons {
+    display: grid;
+    grid-template-columns: fit-content(50%) fit-content(50%);
+    grid-column-gap: 10px;
+}
+
+.wrap-buttons button {
+    width: fit-content;
+}
+
+button.submit {
+    background-color: #595959;
+}
+
+.submit {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: underline !important;
+    color: #0d6efd !important;
+}

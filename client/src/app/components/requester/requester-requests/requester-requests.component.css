@@ -1,0 +1,15 @@
+#wrap-my-requests {
+    padding-block: 15px;
+    height: fit-content;
+}
+
+table {
+    width: 330px;
+    margin-inline: auto;
+    box-shadow: none;
+}
+
+button.mat-mini-fab {
+    background-color: #ffc000;
+    transform: scale(0.8);
+}

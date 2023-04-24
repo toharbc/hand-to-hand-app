@@ -1,0 +1,18 @@
+button {
+    margin-inline: 5px;
+}
+
+.wrap-buttons button:first-of-type {
+    background-color: #ffc000;
+}
+
+.wrap-buttons button:last-of-type {
+    background-color: #585858;
+}
+
+p {
+    margin-block: 15px;
+    font-family: assistant;
+    font-size: 15px;
+    text-align: right;
+}

@@ -1,0 +1,33 @@
+<!-- <p>mitnadev works!</p>
+<div id="mitnadev-page">
+    <div class="logo-wrap-banner">
+      <img src="../assets/logo.png">
+    </div>
+    <div class="buttons-wrap">
+        <button mat-raised-button routerLink="/register">הרשמה</button>
+        <button mat-raised-button routerLink="/login">כבר יש לך חשבון? התחבר</button>
+        
+    </div> -->
+<div id="wrap-mitnadev" class="section">
+  <!-- <header [text]="isLogin?'איזור אישי':'מתנדב'"></header> -->
+  <header text="אזור אישי [מתנדב]"></header>
+
+  <!-- אם המתנדב לא מחובר -->
+  <div *ngIf="!isLogin">
+    <p> יש לבצע התחברות לאתר</p>
+    <div class="wrap-buttons">
+      <button mat-raised-button color="primary" (click)="register()">הרשמה</button>
+      <button mat-raised-button color="primary" (click)="login()">התחברות</button>
+    </div>
+  </div>
+
+  <!-- אם המתנדב מחובר -->
+  <div *ngIf="isLogin">
+    <profile [user]="user" [isRating]="true"></profile>
+    <types-of-volunteering [data]="data"></types-of-volunteering>
+    <button mat-raised-button color="primary" (click)="addTypeOfVolunteering()">הוסף התנדבות</button>
+    <my-request [volunteerings]="volunteerings"></my-request>
+    <button mat-raised-button class="more-space" color="primary" (click)="openCommits()">צפה בתגובות של משתמשים עליך</button>
+  </div>
+
+</div>

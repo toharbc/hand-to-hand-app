@@ -1,0 +1,15 @@
+#wrap-register {
+    display: grid;
+}
+
+button {
+    margin-inline: 5px;
+}
+
+button:first-of-type {
+    background-color: #ffc000;
+}
+
+button:last-of-type {
+    background-color: #585858;
+}

@@ -1,0 +1,26 @@
+.wrap-profile {
+    /* background-color: whitesmoke; */
+    border-bottom: solid 1px #c7c7c7;
+    padding: 8px;
+    margin-inline: 15px;
+}
+
+mat-icon#profile {
+    margin-bottom: 12px;
+    font-size: 31px;
+    height: fit-content;
+    width: fit-content;
+}
+
+button.menu {
+    float: left;
+    transform: translate(18px, 2px);
+}
+
+.wrap-section {
+    display: grid;
+    grid-template-columns: 50px fit-content(100%);
+    width: max-content;
+    margin-inline: auto;
+    align-items: center;
+}

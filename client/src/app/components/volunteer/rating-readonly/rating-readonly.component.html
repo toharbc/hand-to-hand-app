@@ -1,0 +1,12 @@
+<div id="wrap-rating-readonly" class="section">
+    <div class="rating" dir="ltr">
+        <ngb-rating [(rate)]="currentRate.ratingAvg">
+            <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+            </ng-template>
+        </ngb-rating>
+        <br>
+        <p>דירוג: <b>{{currentRate.ratingAvg}}</b></p>
+        <p>דורג ע"י {{currentRate.ratingCount}} משתמשים</p>
+    </div>
+</div>

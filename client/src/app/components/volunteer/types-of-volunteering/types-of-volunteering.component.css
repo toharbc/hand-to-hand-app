@@ -1,0 +1,23 @@
+#wrap-types-of-volunteering {
+    height: fit-content !important;
+    padding-block: 15px;
+}
+
+.type {
+    display: block;
+}
+
+strong {
+    font-weight: 600;
+}
+
+table {
+    width: 330px;
+    margin-inline: auto;
+    box-shadow: none;
+}
+
+button.mat-mini-fab {
+    background-color: #ffc000;
+    transform: scale(0.8);
+}

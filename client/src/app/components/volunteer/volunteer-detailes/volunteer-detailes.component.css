@@ -1,0 +1,25 @@
+button.submit {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #595959;
+}
+
+.wrap-range {
+    display: grid;
+    grid-template-columns: auto 10% auto;
+    align-items: center;
+    text-align: left;
+}
+
+#wrap-adding-new-type {
+    padding: 18px;
+    border-radius: 4px;
+    background-color: whitesmoke;
+    width: 350px;
+}
+
+#wrap-adding-new-type mat-icon {
+    font-size: 19px;
+    height: fit-content;
+    width: fit-content;
+}

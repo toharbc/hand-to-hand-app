@@ -1,0 +1,14 @@
+#wrap-question-dialog, h2 {
+    font-family: assistant;
+    direction: rtl;
+}
+
+.wrap-actions {
+    display: grid;
+    grid-template-columns: auto fit-content(50%);
+    grid-column-gap: 7px;
+}
+
+.wrap-actions button:first-of-type {
+    margin-right: auto;
+}

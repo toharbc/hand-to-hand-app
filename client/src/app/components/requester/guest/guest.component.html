@@ -1,0 +1,45 @@
+<div id="wrap-guest" class="section">
+  <header text="שלום אורח"></header>
+  <!-- <p>שים לב! לפעולות נוספות יש לבצע התחברות לאפליקציה</p> -->
+  <form>
+    <!-- <div> -->
+    <!-- שם המתנדב: <input type="text" #name (input)="changeName(name.value)"><br> -->
+    <mat-form-field *ngIf="!isByType">
+      <mat-label>חפש מתנדב לפי שם</mat-label>
+      <input matInput placeholder="שם מתנדב" type="text" #name (input)="changeName(name.value)">
+    </mat-form-field>
+    <!-- </div> -->
+    <!-- אזור בארץ:     <select #type1 (change)="changeArea(AreaId.value)">
+    <option *ngFor="let item of Area" [value]="item.AreaId">{{item.AreaName}}</option>
+  
+</select> 
+-->
+    <div *ngIf="isByType">
+      <p>חפש מתנדב לפי סוג התנדבות</p>
+      <mat-form-field>
+        <mat-label>בחר סוג התנדבות</mat-label>
+        <mat-select #type1 (change)="changeVolunteeringType(type1.value)">
+          <mat-option *ngFor="let item of volunteeringTypes" [value]="item.TypeOfVolunteeringId">
+            {{item.TypeOfVolunteeringName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div class="wrap-buttons"> -->
+      <button mat-raised-button class="submit" color="primary" type="submit" (click)="isSearch=true">חפש</button>
+      <!-- <button mat-raised-button class="submit" color="primary" type="button" (click)="isByType=!isByType">
+        {{isByType ? 'חיפוש מתנדב לפי שם' : 'חיפוש מתנדב לפי סוג התנדבות'}}</button> -->
+    <!-- </div> -->
+    <p>עבור ל<a (click)="isByType=!isByType">{{isByType ? 'חיפוש מתנדב לפי שם' : 'חיפוש מתנדב לפי סוג התנדבות'}}</a></p>
+    <p>לפעולות נוספות <a href="login">התחבר לאפליקציה</a></p>
+  </form>
+
+  <results-of-searching *ngIf="isSearch"></results-of-searching>
+  <!-- <div *ngFor="let v of volunteeringForUsers">
+    <p>{{v.UserName}}</p>
+    <p>{{v.UserLocation}}</p>
+    <p>{{v.TypeOfVolunteerName}}</p>
+    <button mat-raised-button (click)="showProfile(v.VolunteeringForUsersId!)">Profile</button>
+  </div> -->
+  <!-- <button mat-button class="register" color="primary" routerLink="/register">הרשמה לאתר </button> -->
+</div>
